@@ -1,0 +1,13 @@
+[Unit]
+Description=Handle custom sdcard
+After=local-fs.target
+RequiresMountsFor=/home
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/sbin/mount-sd.custom.sh add
+ExecStop=/usr/sbin/mount-sd.custom.sh remove
+
+[Install]
+WantedBy=multi-user.target
